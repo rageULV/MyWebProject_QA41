@@ -1,0 +1,36 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite1" verbose="1">
+
+    <listeners>
+        <listener class-name="org.testng.reporters.TestHTMLReporter">
+            <parameter name="output-directory" value="test-output"></parameter>
+            <parameter name="file-name" value="testng_report"></parameter>
+        </listener>
+    </listeners>
+
+    <test name="Test1302">
+        <classes>
+            <class name="tests.TestCalculator">
+                <methods>
+                    <include name="testAverageOfNegativeNumbers"/>
+                    <include name="testAverageOfPositiveNumbers"/>
+                    <include name="testMixednumbers"/>
+                    <include name="testSinglenumber"/>
+                    <include name="testEmptyNumbers"/>
+                </methods>
+            </class>
+            <class name="tests.TestMain">
+                <methods>
+                    <include name="testPositive_001"/>
+                    <include name="anotherOne"/>
+                </methods>
+            </class>
+            <class name="tests.TriangleTest">
+                <methods>
+                    <include name="WhatTriangleItIs_Positive"/>
+                    <include name="WhatTriangleItIs_Negative"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
