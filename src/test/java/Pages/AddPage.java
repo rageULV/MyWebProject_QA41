@@ -50,7 +50,7 @@ public class AddPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(5));
         WebElement saveButton = wait.until
         (ExpectedConditions.visibilityOfElementLocated
-                (By.xpath("//b[contains(text(),'Save')]"));
+                (By.xpath("//b[contains(text(),'Save')]")));
         saveButton.click();
     }
 }
