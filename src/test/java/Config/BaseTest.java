@@ -80,7 +80,7 @@ public class BaseTest {// Эта строка объявляет начало о
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(20000));// waits 20 sec before throw exceptions if element doesn't found instantly
         BasePage.setDriver(driver);//organisation drivers
     }
-    @AfterMethod
+    @AfterMethod// if you need more explanation about it in (lesson 4 - time 15mins+-)
     public void tearDown(){
         WebDriver driver = getDriver();
         if(driver != null)
