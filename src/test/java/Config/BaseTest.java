@@ -44,7 +44,10 @@ public class BaseTest {// Эта строка объявляет начало о
              */
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--land=en");
+            options.addArguments("--disable-gpu");
             //options.addArguments("--headless"); //like I understand it just not showing me what happening in the browser...
             driverThreadLocal.set(new ChromeDriver(options));
         }
