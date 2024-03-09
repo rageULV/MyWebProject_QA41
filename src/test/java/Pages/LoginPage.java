@@ -1,6 +1,5 @@
 package Pages;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -40,10 +39,11 @@ public LoginPage fillPasswordField(String password){
         passwordField.sendKeys(password);
         return this;
 }
-public LoginPage clickRegistrationButton(){
+public Alert clickRegistrationButton()
+    {
         registrationButton.click();
-        return this;
-}
+        return getAlertIfPresent();
+    }
 public BasePage clickLoginButton(){
         loginButton.click();
         Alert alert = getAlertIfPresent();
@@ -56,15 +56,18 @@ public BasePage clickLoginButton(){
             return new ContactsPage(driver);
         }
 }
-private Alert getAlertIfPresent(){
-    try {
-         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(5000));
-         return wait.until(ExpectedConditions.alertIsPresent());
-    }catch(TimeoutException e){
-        System.out.println("Alert issue"+e);
-        return null;
-    }
+    private Alert getAlertIfPresent(){
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(5000)); // Создается новый объект класса WebDriverWait,
+            // который ожидает определенный период времени (в данном случае 5000 миллисекунд или 5 секунд).
+            // Он используется для ожидания появления всплывающего окна.
+            return wait.until(ExpectedConditions.alertIsPresent()); // ExpectedConditions.alertIsPresent() указывает,
+            // что мы ждем, пока всплывающее окно не появится. Как только оно появится, метод until() возвращает это всплывающее окно.
+        }catch(TimeoutException e){
+            System.out.println("Alert issue "+e);
+            return  null; // Возвращается null, что означает, что всплывающего окна не было обнаружено.
+        }
 
-}
+    }
 
 }
