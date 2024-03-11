@@ -22,13 +22,20 @@ public class PhoneBookTest extends BaseTest {
     @Description("user allready exixts. Login and add contact")
     public void loginOfAnExistingUserAddContact() throws InterruptedException
     {
+        Allure.description("login exist acc and create new contact");
+
+        Allure.step("go to the site in press login button");
         MainPage mainPage = new MainPage(getDriver());
         LoginPage lpage = mainPage.openTopMenu(TopMenuItem.LOGIN.toString());
 
+        Allure.step("fill the fields of email and password by using resources");
         lpage.fillEmailField(PropertiesReader.getProperties("existingUserEmail")).
                 fillPasswordField(PropertiesReader.getProperties("existingUserPassword")).clickLoginButton();
 
+        Allure.step("after logining press the (add) button");
         mainPage.openTopMenu(TopMenuItem.ADD.toString());
+
+        Allure.step("while in (addpage) make new contact with generating everything but description");
         AddPage addPage = new AddPage(getDriver());
         Contact newContact = new Contact
                 (
@@ -36,10 +43,15 @@ public class PhoneBookTest extends BaseTest {
                   PhoneNumberGenerator.generatePhoneNumber(), EmailGenerator.generateEmail(5,5,2),
                   AddressGenerator.generateAddress(),"something"
                 );
+        Allure.step("converting the new contact to string and filling the form ");
         newContact.toString();
         addPage.fillFormAndSave(newContact);
+
+        Allure.step("after creating new contact gets in (contacts_Page), and checking if the contact is the same as we created");
         ContactsPage contactsPage = new ContactsPage(getDriver());
         Assert.assertTrue(contactsPage.getDataFromContactList(newContact));
+
+        Allure.step("takes screenshot and waits 3 seconds");
         TakeScreen.takeScreenshot("contact_created");
         Thread.sleep(3000);
     }

@@ -6,11 +6,11 @@ public class mailGenerator {
 
     public static void main(String[] args) {
         for(int i=0; i<10; i++) {
-            String email = chooseEmailGenerator();
+            String email = pickRandomEmailGenerator();
             System.out.println(email);
         }
         }
-    public static String chooseEmailGenerator() {
+    public static String pickRandomEmailGenerator() {
         Random random = new Random();
         int choice = random.nextInt(3); // Randomly choose one of the three methods
         switch (choice) {
