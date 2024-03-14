@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Mar 11 15:52:02 IST 2024","Mon Mar 11 15:52:13 IST 2024","10798","suite1","MyFirstTest","Tests.PhoneBookTest","Tests.PhoneBookTest","loginOfAnExistingUserAddContact","loginOfAnExistingUserAddContact","user allready exixts. Login and add contact"
+"passed","Sat Mar 09 22:37:35 IST 2024","Sat Mar 09 22:37:37 IST 2024","2168","Default Suite","MyWebProject_QA41","Tests.PhoneBookTest","Tests.PhoneBookTest","registrationWithoutPassword","The test checks the empty field warning declaration.","User already exist. Login and add contact.!"
+"passed","Mon Mar 11 15:41:41 IST 2024","Mon Mar 11 15:41:52 IST 2024","10777","Default Suite","MyWebProject_QA41","Tests.PhoneBookTest","Tests.PhoneBookTest","loginOfAnExistingUserAddContact","loginOfAnExistingUserAddContact","user allready exixts. Login and add contact"
