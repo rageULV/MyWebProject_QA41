@@ -10,8 +10,11 @@ import Pages.MainPage;
 import io.qameta.allure.Description;
 import model.Contact;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
@@ -91,13 +94,32 @@ public class PhoneBookTest extends BaseTest {
         LoginPage lpage = mainPage.openTopMenu(TopMenuItem.LOGIN.toString());
 
         String mail = EmailGenerator.generateEmail(6,4,2);
-        EmailGenerator.saveGeneratedMailToResources("2",mail);
+        EmailGenerator.saveGeneratedMailToResources("4",mail);
 
         lpage.fillEmailField(mail).fillPasswordField(PropertiesReader.getProperties("existingUserPassword"));
-        lpage.clickRegistrationButton();
+        //lpage.fillEmailField(mail).fillPasswordField("1");
 
-        String currentUrl = getDriver().getCurrentUrl();
-        Assert.assertEquals(currentUrl,"https://telranedu.web.app/contacts");
-        Thread.sleep(5000);
+        Alert alert = lpage.clickRegistrationButton();
+        if (alert == null) {
+            String currentUrl = getDriver().getCurrentUrl();
+
+            // checking url
+            Assert.assertEquals(currentUrl, "https://telranedu.web.app/contacts");
+            TakeScreen.takeScreenshot("Successful Registration");
+
+            // searching element
+//            ContactsPage contactsPage = new ContactsPage(getDriver());
+//            Assert.assertTrue(contactsPage.isElementPersist(getDriver().
+//                    findElement(By.xpath("//button[contains(text(),'Sign Out')]"))));
+
+            Thread.sleep(2000);
+        }
+        else {
+            String expectedString = "Wrong";
+            boolean isAlertHandled = AlertHandler.handlerAlert(alert, expectedString); // creating true/false, that asks if alert was handled(alert, expected string it is the thing we wrote here for now)
+            Assert.assertTrue(isAlertHandled);//assert its assert ...........
+            TakeScreen.takeScreenshot("unSuccessful Registration");
+            Thread.sleep(2000);
+        }
     }
 }

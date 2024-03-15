@@ -19,6 +19,9 @@ public class ContactsPage extends BasePage{
         setDriver(driver);
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 20),this);
     }
+    public boolean isElementPersist(WebElement element){
+        return isElementPresent(element);
+    }
     public boolean getDataFromContactList(Contact contact){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5)); // Создается объект класса WebDriverWait,
         // который ожидает видимости элемента на странице в течение 5 секунд.
