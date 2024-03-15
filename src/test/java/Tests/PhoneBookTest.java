@@ -11,10 +11,13 @@ import io.qameta.allure.Description;
 import model.Contact;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 public class PhoneBookTest extends BaseTest {
 
@@ -80,5 +83,21 @@ public class PhoneBookTest extends BaseTest {
         boolean isAlertHandled = AlertHandler.handlerAlert(alert, expectedString); // creating true/false, that asks if alert was handled(alert, expected string it is the thing we wrote here for now)
         Assert.assertTrue(isAlertHandled);//assert its assert ...........
 
+    }
+    @Test
+    @Description("s")
+    public void homeworkAssertTrueRegistrated() throws InterruptedException, IOException {
+        MainPage mainPage = new MainPage(getDriver());
+        LoginPage lpage = mainPage.openTopMenu(TopMenuItem.LOGIN.toString());
+
+        String mail = EmailGenerator.generateEmail(6,4,2);
+        EmailGenerator.saveGeneratedMailToResources("2",mail);
+
+        lpage.fillEmailField(mail).fillPasswordField(PropertiesReader.getProperties("existingUserPassword"));
+        lpage.clickRegistrationButton();
+
+        String currentUrl = getDriver().getCurrentUrl();
+        Assert.assertEquals(currentUrl,"https://telranedu.web.app/contacts");
+        Thread.sleep(5000);
     }
 }
