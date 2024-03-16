@@ -10,16 +10,10 @@ import Pages.MainPage;
 import io.qameta.allure.Description;
 import model.Contact;
 import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
 import java.io.IOException;
 
 public class PhoneBookTest extends BaseTest {
@@ -123,3 +117,4 @@ public class PhoneBookTest extends BaseTest {
         }
     }
 }
+
