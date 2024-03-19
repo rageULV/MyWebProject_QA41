@@ -13,6 +13,7 @@ public class BasePage {
     }
 
     public static boolean isElementPresent(WebElement element) {
+        // if you want check that element is not present by this method you will have to use assertThrows !!!!
         try {
             // Попытка выполнить любое действие с элементом
             element.isDisplayed();

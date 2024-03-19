@@ -18,7 +18,7 @@ import java.util.*;
 public class WindowAndTabTests {
     public static void main(String[] args) throws InterruptedException {
         // switchTab();
-        // sliderTest();
+         sliderTest();
 
         // findRowByValue("Frank");
         // findRowByValueLambda("Frank");
@@ -49,13 +49,13 @@ public class WindowAndTabTests {
         action.dragAndDropBy(slider, 30, 0).build().perform(); // Выполнение действия перетаскивания ползунка слайдера на 30 пикселей вправо (горизонтальное перемещение). Затем метод perform() применяет это действие.
         Thread.sleep(3000);
 
-/*
-        WebElement slider = driver.findElement(By.xpath("//input[@type='range']"));
-        slider.sendKeys(Keys.ARROW_RIGHT); Thread.sleep(1000);
-        slider.sendKeys(Keys.ARROW_RIGHT); Thread.sleep(1000);
-        slider.sendKeys(Keys.ARROW_RIGHT); Thread.sleep(1000);
-        slider.sendKeys(Keys.ARROW_RIGHT); Thread.sleep(1000);
-        slider.sendKeys(Keys.ARROW_RIGHT); Thread.sleep(1000);*/
+
+//        WebElement slider = driver.findElement(By.xpath("//input[@type='range']"));
+//        slider.sendKeys(Keys.ARROW_RIGHT); Thread.sleep(1000);
+//        slider.sendKeys(Keys.ARROW_RIGHT); Thread.sleep(1000);
+//        slider.sendKeys(Keys.ARROW_RIGHT); Thread.sleep(1000);
+//        slider.sendKeys(Keys.ARROW_RIGHT); Thread.sleep(1000);
+//        slider.sendKeys(Keys.ARROW_RIGHT); Thread.sleep(1000);
         driver.quit(); // Завершение сеанса веб-драйвера. Этот шаг очищает ресурсы, освобождает браузер и завершает сеанс, что важно для правильной работы и завершения теста.
     }
     public static void switchTab(){

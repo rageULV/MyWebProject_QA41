@@ -11,11 +11,19 @@ public class AssertionTest {
     public  static int myCalc(int a, int b){
         return a+b;
     }
-
-    public  static boolean myValue(){
-
-        return true;
+    public static int devideByZero(int a, int b) throws ArithmeticException{
+           return a/b;
     }
+//    @Test(expectedExceptions = AssertionTest.class)
+//    public void devideByZeroTest (){
+//        devideByZero(10, 0);
+//
+//    }
+//
+//    public  static boolean myValue(){
+//
+//        return true;
+//    }
     @Test
     public void testCalc(){
         Assert.assertThrows(ArithmeticException.class, ()-> myTest());

@@ -1,8 +1,9 @@
 package model;
 
+import java.io.*;
 import java.util.Objects;
 
-public class Contact{
+public class Contact implements Serializable {
 
     private String name;
     private String lastname;
@@ -25,11 +26,12 @@ public class Contact{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Contact contact)) return false;
-        return Objects.equals(getName(), contact.getName()) && Objects.equals(getLastname(),
-                contact.getLastname()) && Objects.equals(getPhone(),
-                contact.getPhone()) && Objects.equals(getEmail(),
-                contact.getEmail()) && Objects.equals(getAddress(),
-                contact.getAddress()) && Objects.equals(getDescription(), contact.getDescription());
+        return  Objects.equals(getName(), contact.getName()) &&
+                 Objects.equals(getLastname(), contact.getLastname()) &&
+                  Objects.equals(getPhone(), contact.getPhone()) &&
+                   Objects.equals(getEmail(), contact.getEmail()) &&
+                    Objects.equals(getAddress(), contact.getAddress()) &&
+                     Objects.equals(getDescription(), contact.getDescription());
     }
     @Override
     public int hashCode() {
@@ -86,5 +88,18 @@ public class Contact{
                 ", address='" + address + '\'' +
                 ", description='" + description + '\'' +
                 '}';
+    }
+    public static void serializeContact(Contact contact, String fileName) throws IOException {
+            ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(fileName));
+            outputStream.writeObject(contact);
+    }
+    public static Contact deserializeContact(String fileName) {
+        try (
+            ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(fileName));){
+            return (Contact) inputStream.readObject();
+        } catch (IOException |ClassNotFoundException e) {
+            System.out.println("Error during contact deserialization");
+            throw new RuntimeException(e);
+        }
     }
 }

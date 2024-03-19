@@ -30,6 +30,8 @@ public class MainPage extends BasePage{
                 return(T) new LoginPage(driver);
             case"ADD":
                 return(T) new AddPage(driver);
+            case"CONTACTS":
+                return(T) new ContactsPage(driver);
 
             default: throw new IllegalArgumentException("something wrong"+topMenuItem);
         }
