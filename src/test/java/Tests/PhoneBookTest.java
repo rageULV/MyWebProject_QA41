@@ -186,8 +186,8 @@ public class PhoneBookTest extends BaseTest {
         Contact.serializeContact(newContact,filename);
         ContactsPage contactsPage = new ContactsPage(getDriver());
         Contact deserContact = Contact.deserializeContact(filename);
-//        Assert.assertNotEquals(contactsPage.deleteContactByPhoneNumber(deserContact.getPhone()),
-//                );
+        Assert.assertNotEquals(contactsPage.deleteContactByPhoneNumberOrName(deserContact.getPhone())
+                ,contactsPage.getContactsListSize());
     }
 }
 

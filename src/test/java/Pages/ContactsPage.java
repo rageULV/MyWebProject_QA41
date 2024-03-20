@@ -25,12 +25,15 @@ public class ContactsPage extends BasePage{
         // if you want check that element is not present by this method you will have to use assertThrows !!!!
         return isElementPresent(element);
     }
-    protected List<WebElement> getContactsList(){
-        return driver.findElements(By.xpath("//div[@class='contact-item_card__2SOIM']"));
-    }
     public void clickRemoveButton() {
         WebElement removeButton = driver.findElement(By.xpath("//button[normalize-space()='Remove']"));
         removeButton.click();
+    }
+    public int getContactsListSize(){
+        return getContactsList().size();
+    }
+    protected List<WebElement> getContactsList(){
+        return driver.findElements(By.xpath("//div[@class='contact-item_card__2SOIM']"));
     }
     public int deleteContactByPhoneNumberOrName(String phoneNumberOrName){
         List<WebElement> contactsList = getContactsList();
@@ -40,7 +43,7 @@ public class ContactsPage extends BasePage{
             for(WebElement contact: contactsList)
             {
                 WebElement phoneNumberOrNameData = contact.findElement(By.
-                        xpath("(//h3[contains(text(),'"+phoneNumberOrName+"')]) | (//h2[contains(text(),'\"+phoneNumberOrName+\"')])"));
+                        xpath("(//h3[text()='"+phoneNumberOrName+"']) | (//h2[contains(text(),'\"+phoneNumberOrName+\"')])"));
                 if(phoneNumberOrNameData.isDisplayed())
                 {
                     phoneNumberOrNameData.click();
