@@ -7,4 +7,6 @@ public class gitCommands {
 
     // git add .                            - add/replaces the changes you did in the code to the git
     // git commit -m "my commit MyBranch"   - commits the add command
+
+    // git checkout main
 }
