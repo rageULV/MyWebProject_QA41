@@ -6,6 +6,7 @@ import Pages.*;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import model.Contact;
+import model.User;
 import org.openqa.selenium.*;
 import org.testng.Assert;
 import org.testng.annotations.Optional;
@@ -52,7 +53,6 @@ public class PhoneBookTest extends BaseTest {
         TakeScreen.takeScreenshot("contact_created");
         Thread.sleep(3000);
     }
-
     @Test
     public void phoneBookTest_001() throws InterruptedException {
         MainPage mainPage = new MainPage(getDriver());
@@ -60,7 +60,6 @@ public class PhoneBookTest extends BaseTest {
         loginPage.fillEmailField("sherk@mail.com").clickRegistrationButton();
         Thread.sleep(3000);
     }
-
     @Test(description = "The test checks the empty field warning declaration.")
     @Parameters("browser")
     public void registrationWithoutPassword(@Optional("chrome") String browser) throws InterruptedException {
@@ -188,6 +187,43 @@ public class PhoneBookTest extends BaseTest {
         Contact deserContact = Contact.deserializeContact(filename);
         Assert.assertNotEquals(contactsPage.deleteContactByPhoneNumberOrName(deserContact.getPhone())
                 ,contactsPage.getContactsListSize());
+    }
+    @Test
+    public void reRegistrationAttempt(){
+        // this TEST create new user in the site in then login off
+        // and then tries to register again with the same pass and email.
+        boolean res = false;
+        Allure.description("Registration attempt test.");
+        MainPage mainpage = new MainPage(getDriver());
+        Allure.description("open Login menu");
+        LoginPage loginPage = mainpage.openTopMenu(TopMenuItem.LOGIN.toString());
+
+        User user = new User (EmailGenerator.generateEmail(6,4,2),
+                PasswordStringGenerator.generateString());
+
+        System.out.println("USER_MAIL: "+user.getUserEmail()+" USER_PASS: "+user.getUserPassword());
+        loginPage.fillPasswordField(user.getUserPassword()).
+                  fillEmailField(user.getUserEmail());
+
+        Alert alert = loginPage.clickRegistrationButton();
+        if (alert == null)
+        {
+            ContactsPage contactsPage = new ContactsPage(getDriver());
+            loginPage = contactsPage.clickBySignOutButton();
+
+            Alert alert1 = loginPage.fillEmailField(user.getUserEmail())
+                    .fillPasswordField(user.getUserPassword()).clickRegistrationButton();
+            if(alert1 != null)
+            {
+                res = AlertHandler.handlerAlert(alert1,"exist");
+            }
+        }
+        else
+        {
+            System.out.println("reRegistrationAttempt");
+        }
+        Assert.assertTrue(res, "Registration attempt succeed! in reRegistration test.");
+
     }
 }
 

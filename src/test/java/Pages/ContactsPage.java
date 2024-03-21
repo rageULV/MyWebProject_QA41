@@ -29,6 +29,10 @@ public class ContactsPage extends BasePage{
         WebElement removeButton = driver.findElement(By.xpath("//button[normalize-space()='Remove']"));
         removeButton.click();
     }
+    public LoginPage clickBySignOutButton(){
+        signOutButton.click();
+        return new LoginPage(driver);
+    }
     public int getContactsListSize(){
         return getContactsList().size();
     }
