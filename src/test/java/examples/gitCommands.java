@@ -24,8 +24,12 @@ public class gitCommands {
     // if you have done with conflicts
     // you can try commit again should work.
 
+    // git init                              - telling that we are goin work with git and creating folder"invisible"
+    //                                        !and then you need to!
+    // git remote add origin https://github.com/rageULV/MyWebProject_QA41 - url its example
 
-
+    // git push origin main                  - this one pulls it to git not sure really about it be carefull!!!!!!
+    //                 main - your branch name!!!
 
 
  }
