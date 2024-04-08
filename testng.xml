@@ -6,7 +6,7 @@
         <classes>
             <class name="Tests.PhoneBookTest">
                 <methods>
-                    <include name="loginOfAnExistingUserAddContact"/>
+                    <include name="deleteContactApproachTwo"/>
                 </methods>
             </class>
         </classes>

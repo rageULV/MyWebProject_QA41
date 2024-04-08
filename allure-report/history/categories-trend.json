@@ -1,1 +1,1 @@
-[{"data":{}}]
+[{"buildOrder":19,"reportUrl":"http://localhost:8080/job/PhoneBookLocal/19/allure","reportName":"AllureReport","data":{"Product defects":3,"Test defects":2}},{"buildOrder":18,"reportUrl":"http://localhost:8080/job/PhoneBookTest/18/allure","reportName":"AllureReport","data":{"Product defects":2,"Test defects":2}},{"buildOrder":17,"reportUrl":"http://localhost:8080/job/PhoneBookTest/17/allure","reportName":"AllureReport","data":{"Product defects":4,"Test defects":2}}]
