@@ -11,10 +11,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 
@@ -30,7 +27,7 @@ public class BaseTest {// Эта строка объявляет начало о
 
     // Эти строки аннотируют метод setUp как метод, который должен быть выполнен перед каждым тестовым методом (@BeforeMethod), и указывают, что он принимает параметр browser из файла конфигурации.
     // Аннотация @Optional("firefox") означает, что значение по умолчанию для browser - это "firefox".
-    @BeforeMethod
+    @BeforeSuite
     @Parameters("browser")
     public void setUp(@Optional("firefox") String browser) {
         // Этот блок кода проверяет, является ли значение параметра browser равным "chrome".
@@ -83,7 +80,7 @@ public class BaseTest {// Эта строка объявляет начало о
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(20000));// waits 20 sec before throw exceptions if element doesn't found instantly
         BasePage.setDriver(driver);//organisation drivers
     }
-    @AfterMethod// if you need more explanation about it in (lesson 4 - time 15mins+-)
+    @AfterSuite// if you need more explanation about it in (lesson 4 - time 15mins+-)
     public void tearDown(){
         WebDriver driver = getDriver();
         if(driver != null)
