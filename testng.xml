@@ -4,7 +4,7 @@
     <test name="MyFirstTest">
         <parameter name="browser" value="firefox"></parameter>
         <classes>
-            <class name="Tests.PhoneBookTest">
+            <class name="Tests.PBtestTry">
                 <methods>
                     <include name="deleteContactApproachTwo"/>
                 </methods>
