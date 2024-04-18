@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="suite1" verbose="2">
+
+    <test name="MyFirstTest">
+        <parameter name="browser" value="firefox"></parameter>
+        <classes>
+            <class name="Tests.PhoneBookTest">
+                <methods>
+                    <include name="deleteContactApproachTwo"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
