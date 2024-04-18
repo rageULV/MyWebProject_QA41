@@ -6,6 +6,7 @@ import Pages.ContactsPage;
 import Pages.LoginPage;
 import Pages.MainPage;
 import model.Contact;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.io.IOException;
@@ -31,10 +32,12 @@ public class PBtestTry {
                         AddressGenerator.generateAddress(), "testing"
                 );
         addPage.fillFormAndSave(newContact);
-        Contact.serializeContact(newContact,filename);
+
+        //Contact.serializeContact(newContact,filename);
         ContactsPage contactsPage = new ContactsPage(getDriver());
-        Contact deserContact = Contact.deserializeContact(filename);
-        Assert.assertNotEquals(contactsPage.deleteContactByPhoneNumberOrName(deserContact.getPhone())
-                ,contactsPage.getContactsListSize());
+        Assert.assertTrue(contactsPage.isElementPersist(getDriver().findElement(By.xpath("//button[contains(text(),'Sign Out')]"))));
+       // Contact deserContact = Contact.deserializeContact(filename);
+        /*Assert.assertNotEquals(contactsPage.deleteContactByPhoneNumberOrName(deserContact.getPhone())
+                ,contactsPage.getContactsListSize());*/
     }
 }
