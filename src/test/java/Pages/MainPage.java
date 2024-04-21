@@ -1,5 +1,6 @@
 package Pages;
 
+import Config.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -10,10 +11,10 @@ import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 public class MainPage extends BasePage{
 
     public MainPage(WebDriver driver){
-        setDriver(driver);
-        driver.get("https://telranedu.web.app");
+        String url = BaseTest.serverurl;
+        driver.get(url);
+//        driver.get("https://telranedu.web.app");
         PageFactory.initElements(new AjaxElementLocatorFactory(driver,20),this);
-
     }
     public <T extends BasePage> T openTopMenu(String topMenuItem)
     {

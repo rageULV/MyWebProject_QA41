@@ -17,6 +17,7 @@ import java.time.Duration;
 
 public class BaseTest {// Эта строка объявляет начало определения класса BaseTest. Класс является шаблоном или чертежом для создания объектов.
 
+    public static String serverurl;
     private static final ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
     ; //Эта строка объявляет статическое приватное поле driverThreadLocal, которое является объектом класса ThreadLocal. Он используется для хранения объектов типа WebDriver в потоке исполнения.
 
@@ -28,8 +29,8 @@ public class BaseTest {// Эта строка объявляет начало о
     // Эти строки аннотируют метод setUp как метод, который должен быть выполнен перед каждым тестовым методом (@BeforeMethod), и указывают, что он принимает параметр browser из файла конфигурации.
     // Аннотация @Optional("firefox") означает, что значение по умолчанию для browser - это "firefox".
     @BeforeSuite
-    @Parameters("browser")
-    public void setUp(@Optional("firefox") String browser) {
+    @Parameters({"browser","server"})
+    public void setUp(@Optional("firefox") String browser,@Optional("https://telranedu.web.app/home") String server) {
         // Этот блок кода проверяет, является ли значение параметра browser равным "chrome".
         // Если да, то он настраивает ChromeDriver и добавляет опции для запуска браузера на английском язы
         if (browser.equalsIgnoreCase("chrome")) {

@@ -60,7 +60,7 @@ public class PhoneBookTest extends BaseTest {
         loginPage.fillEmailField("sherk@mail.com").clickRegistrationButton();
         Thread.sleep(3000);
     }
-    @Test(description = "The test checks the empty field warning declaration.")
+    @Test(groups = "group1",description = "The test checks the empty field warning declaration.")
     @Parameters("browser")
     public void registrationWithoutPassword(@Optional("chrome") String browser) throws InterruptedException {
         Allure.description("User already exist. Login and add contact.!");
